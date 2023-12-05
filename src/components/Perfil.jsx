@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MdOutlineMailLock } from "react-icons/md";
-import supbaselogo from "../assets/supabaselogo.png"
+import userlogo from "../assets/user-logo.png"
 export function Perfil({ foto, name,email }) {
   return (
     <Container>
@@ -17,7 +17,7 @@ export function Perfil({ foto, name,email }) {
         </div>
       </section>
       <div className="contentLogosupa">
-           <img src={supbaselogo} className="logo supabase" alt="Vite logo" />
+           <img src={userlogo} className="logo supabase" alt="Vite logo" />
       </div>
    
     </Container>

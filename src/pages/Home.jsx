@@ -1,20 +1,29 @@
-import googlelogo from "../assets/logogoogle.png";
-import { Perfil } from "../components/Perfil";
+import React from 'react';
+import { Perfil } from '../components/Perfil';
+import { UserAuth } from '../context/AuthContext';
+import Movies from '../components/Movies';  // Importar el componente Movies
+import Reviews from '../components/Reviews';  // Importar el componente Reviews
+import { useNavigate } from 'react-router-dom';
+
 export function Home() {
+  const { user, signout } = UserAuth();
+  const navigate = useNavigate();
 
-  return ( <div className="App">
-   <Perfil foto="foto" name="name" email="email"/>
-   
- 
+  // Función para redirigir a la página de reseñas
+  const redirectToMovies = () => {
+    // Puedes usar el enrutamiento de React Router o cualquier otra forma de navegación
+    // Aquí se muestra un ejemplo simple de redirección usando window.location
+    navigate("/movie")
+  };
 
-  <h1>SUPABASE es COOL</h1>
-  <img src={googlelogo} className="logo google" alt="React logo" />
-  <div className="card">
-    <button>Cerrar sesión</button>
-    <p>codigo369.com</p>
-  </div>
-  <p className="read-the-docs">
-    Supabase implementa todo el poder de PostgreSQL
-  </p>
-</div>);
+  return (
+    <div className="App">
+      <h1>TAMTU Movies</h1>
+      <div className="card">
+        <button onClick={signout}>Cerrar sesión</button>
+        <button onClick={redirectToMovies}>Ir a Reseñas</button>
+      </div>
+      <Perfil foto={user.picture} name={user.name} email={user.email} />
+    </div>
+  );
 }
